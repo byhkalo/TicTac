@@ -49,6 +49,8 @@ typedef enum{
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //настраиваем все клетки (кнопки) и сбрасываем все нажатия
+    
     self.stepCount = 0;
     [self setIndexToButtons];
     [self setEnabledtoAllButtons:NO];
@@ -64,6 +66,7 @@ typedef enum{
 #pragma mark - Private Methods
 
 -(void) setIndexToButtons {
+    //создаем массив двумерный и настраиваем кнопки внутри
     
     self.mainArray = [[NSArray alloc]initWithObjects:self.arrayIOne,self.arrayITwo,self.arrayIThree, nil];
     
@@ -168,11 +171,17 @@ typedef enum{
         
         
     }else{
-        
+        //расмотрение первого хода
         if ([[[[self.arrayITwo objectAtIndex:1] label]text]isEqualToString:@""]) {
+            
+            //если центр свободен
+            
             BKButton* centrButton = [self.arrayITwo objectAtIndex:1];
             centrButton.label.text = [self signOfStep];
         }else{
+            
+            //если центр занят
+            
             BKButton* firstButton = [self.arrayIOne objectAtIndex:0];
             firstButton.label.text = [self signOfStep];
         }
@@ -190,21 +199,27 @@ typedef enum{
 }
 
 -(NSArray*) randomButton {
-
+    
+    NSMutableArray* mutableArray = [NSMutableArray array];
+    
     for (NSArray* array in self.mainArray) {
         for (BKButton* someButton in array) {
             
             if ([someButton.label.text isEqualToString:@""]) {
                 
-                return @[someButton];
+                [mutableArray addObject:someButton];
                 
             }
             
         }
     }
     
-    NSLog(@"return Nill in RandomButton");
+    BKButton* button = [mutableArray objectAtIndex:arc4random()%mutableArray.count];
+    if (button) {
+        return @[button];
+    }
     
+    NSLog(@"return Nill in RandomButton");
     return nil;
 }
 
@@ -296,7 +311,8 @@ typedef enum{
                 
                 for (NSInteger i = 0;i<=3; i++) {
                     
-                    BKDirection direction = i;
+                    BKDirection direction = (BKDirection)i;
+        
                     BOOL indicator = YES;
                     
                   
