@@ -77,7 +77,7 @@ typedef enum{
             someButton.direction = [NSMutableArray array];
             someButton.i = i;
             someButton.j = j;
-            NSLog(@"someButton i = %d, j= %d", someButton.i, someButton.j);
+            NSLog(@"someButton i = %ld, j= %ld", (long)someButton.i, (long)someButton.j);
         }
     }
 }
@@ -145,7 +145,7 @@ typedef enum{
                
                //Если мы не в центре
                if ([enemyCapabilityArray count] > 0) {
-                   NSLog(@"\n [enemyCapabilityArray count] = %d\n", [enemyCapabilityArray count] );
+                   NSLog(@"\n [enemyCapabilityArray count] = %lu\n", (unsigned long)[enemyCapabilityArray count] );
                    if ([enemyCapabilityArray count]== 6) {
                        [self setSignOfStepInButtonFromArray:enemyCapabilityArray atIndex:2];
                    }else {
@@ -231,7 +231,7 @@ typedef enum{
         for (BKButton* someButton in array) {
             
             if ([someButton.label.text isEqualToString:@""]) {
-                NSLog(@"Создаем воображаемый Массив добавляя Знак - %@ в клетку - %d Для поиска наиболее опасных точек",sign, someButton.tag);
+                NSLog(@"Создаем воображаемый Массив добавляя Знак - %@ в клетку - %ld Для поиска наиболее опасных точек",sign, (long)someButton.tag);
                 someButton.label.text = sign;
                 NSArray* array = [self findComplateLinesBySign:sign];
                 someButton.label.text = @"";
@@ -273,7 +273,7 @@ typedef enum{
         for (BKButton* someButton in array) {
             
             if ([someButton.label.text isEqualToString:@""]) {
-                NSLog(@"К полученому массиву мы добавляем знак - %@ в пустую клетку - %d, для поиска готовых линий",sign, someButton.tag);
+                NSLog(@"К полученому массиву мы добавляем знак - %@ в пустую клетку - %ld, для поиска готовых линий",sign, (long)someButton.tag);
                 someButton.label.text = sign;
                 NSArray* array = [self completlyLinesBySign:sign];
                 someButton.label.text = @"";
@@ -305,7 +305,7 @@ typedef enum{
             count = 1;
             
             if ([someButton.label.text isEqualToString:sign]) {
-                NSLog(@"Стартовая КЛЕТКА. В клетке - %d находится знак - %@", someButton.tag, sign);
+                NSLog(@"Стартовая КЛЕТКА. В клетке - %ld находится знак - %@", (long)someButton.tag, sign);
                 
                 BKButton* sourseButton = someButton;
                 
@@ -318,11 +318,11 @@ typedef enum{
                   
                     while (indicator) {
                         //Проверка на наличие линии клеток по направлению direction
-                        if ([self isNextBattonFromSourseButton:sourseButton withDirection:direction andSign:sign]) {
+                        if ([self isNextButtonFromSourseButton:sourseButton withDirection:direction andSign:sign]) {
                             count++;
                             changingElement = YES;
                             sourseButton = [self buttonFromDirection:direction bySourceButton:sourseButton];
-                            NSLog(@"По направлению - %d в клетке №%d лежит знак - %@", direction, sourseButton.tag, sign);
+                            NSLog(@"По направлению - %d в клетке №%ld лежит знак - %@", direction, (long)sourseButton.tag, sign);
                         }else{
                             
                             indicator = NO;
@@ -335,7 +335,7 @@ typedef enum{
                         
                         if (count == 3) {
                             indicator = NO;
-                            NSLog(@"От клетки %d по направлению - %d лежат ТРИ ПОДРЯД одинаковых знака - %@", someButton.tag, direction, sign);
+                            NSLog(@"От клетки %ld по направлению - %d лежат ТРИ ПОДРЯД одинаковых знака - %@", (long)someButton.tag, direction, sign);
                             [someButton.direction addObject:[NSNumber numberWithInt:direction]];
                             count = 1;
                         }
@@ -372,7 +372,7 @@ typedef enum{
     
 }
 
--(BOOL) isNextBattonFromSourseButton:(BKButton*)sourse withDirection:(BKDirection)direction andSign:(NSString*) sign{
+-(BOOL) isNextButtonFromSourseButton:(BKButton*)sourse withDirection:(BKDirection)direction andSign:(NSString*) sign{
     
     BKButton* someButton = [self buttonFromDirection:direction bySourceButton:sourse];
     
@@ -447,7 +447,7 @@ typedef enum{
     
     if (winStartButton) {
         
-        NSLog(@"winStartButton. tag = %d; winStartButton. direction = %@ ", winStartButton.tag, winStartButton.direction);
+        NSLog(@"winStartButton. tag = %ld; winStartButton. direction = %@ ", (long)winStartButton.tag, winStartButton.direction);
         NSInteger count = 1;
         BOOL changingElement = NO;
         BKButton* sourseButton = winStartButton;
@@ -456,13 +456,13 @@ typedef enum{
         
         for (NSInteger i = 0;i<=3; i++) {
             
-            BKDirection direction = i;
+            BKDirection direction = (BKDirection)i;
             BOOL indicator = YES;
             
             
             while (indicator) {
                 //Проверка на наличие линии клеток по направлению direction
-                if ([self isNextBattonFromSourseButton:sourseButton withDirection:direction andSign:sourseButton.label.text]) {
+                if ([self isNextButtonFromSourseButton:sourseButton withDirection:direction andSign:sourseButton.label.text]) {
                     count++;
                     changingElement = YES;
                     [winnerButtonLines addObject:sourseButton];
