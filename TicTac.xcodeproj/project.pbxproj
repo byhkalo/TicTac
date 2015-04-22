@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		041E26A01A7A348400D3C7DC /* BKButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 041E269F1A7A348400D3C7DC /* BKButton.m */; };
 		04F2CFD01A48D3DC0027696D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F2CFCF1A48D3DC0027696D /* main.m */; };
 		04F2CFD31A48D3DC0027696D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F2CFD21A48D3DC0027696D /* AppDelegate.m */; };
 		04F2CFD61A48D3DC0027696D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F2CFD51A48D3DC0027696D /* ViewController.m */; };
@@ -27,6 +28,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		041E269E1A7A348400D3C7DC /* BKButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKButton.h; sourceTree = "<group>"; };
+		041E269F1A7A348400D3C7DC /* BKButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKButton.m; sourceTree = "<group>"; };
 		04F2CFCA1A48D3DC0027696D /* TicTac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TicTac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04F2CFCE1A48D3DC0027696D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04F2CFCF1A48D3DC0027696D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -85,6 +88,8 @@
 				04F2CFD21A48D3DC0027696D /* AppDelegate.m */,
 				04F2CFD41A48D3DC0027696D /* ViewController.h */,
 				04F2CFD51A48D3DC0027696D /* ViewController.m */,
+				041E269E1A7A348400D3C7DC /* BKButton.h */,
+				041E269F1A7A348400D3C7DC /* BKButton.m */,
 				04F2CFD71A48D3DC0027696D /* Main.storyboard */,
 				04F2CFDA1A48D3DC0027696D /* Images.xcassets */,
 				04F2CFDC1A48D3DC0027696D /* LaunchScreen.xib */,
@@ -219,6 +224,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				041E26A01A7A348400D3C7DC /* BKButton.m in Sources */,
 				04F2CFD61A48D3DC0027696D /* ViewController.m in Sources */,
 				04F2CFD31A48D3DC0027696D /* AppDelegate.m in Sources */,
 				04F2CFD01A48D3DC0027696D /* main.m in Sources */,
@@ -412,6 +418,7 @@
 				04F2CFEF1A48D3DC0027696D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		04F2CFF01A48D3DC0027696D /* Build configuration list for PBXNativeTarget "TicTacTests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +427,7 @@
 				04F2CFF21A48D3DC0027696D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
