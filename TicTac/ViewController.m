@@ -537,11 +537,15 @@ typedef enum{
     }
     
     if (self.stepCount < 9) {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-       
-        //[[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+        [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
         
-        if (self.typeOfGameSegmentControl.selectedSegmentIndex == 1) {
+        
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+            [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+        
+            if (self.typeOfGameSegmentControl.selectedSegmentIndex == 1) {
         self.stepCount++;
         [self makeMove];
         if (self.stepCount >=5) {
@@ -550,9 +554,15 @@ typedef enum{
         if (self.stepCount == 9) {
             [self setEnabledtoAllButtons:NO];
         }
-    }
+        }
+            
+            //[[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+            
         
     });
+        
+        
+        
     }
 
         
